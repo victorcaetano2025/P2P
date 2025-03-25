@@ -2,8 +2,9 @@ import java.io.IOException;
 import java.net.*;
 
 public class Connector {
-    public void server(){
-        try (ServerSocket serverSocket = new ServerSocket(4088)) {
+
+    public void server(int port){
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
             while (true) {
                 Socket socket = serverSocket.accept();
             System.out.println("Cliente conectado!: "+socket.getInetAddress());
