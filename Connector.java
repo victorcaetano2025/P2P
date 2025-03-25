@@ -6,7 +6,7 @@ public class Connector {
         try (ServerSocket serverSocket = new ServerSocket(4088)) {
             while (true) {
                 Socket socket = serverSocket.accept();
-            System.out.println("Cliente conectado! "+socket.getInetAddress());
+            System.out.println("Cliente conectado!: "+socket.getInetAddress());
                 
             }
 
