@@ -1,4 +1,3 @@
-//mexido
 import java.util.Scanner;
 
 class Sender extends Thread {
@@ -17,9 +16,9 @@ public Sender(Scanner entrada){
 
 
            
-            if (sms.equalsIgnoreCase("close")) {
+            if (sms.equalsIgnoreCase("chatclose")) {
                 System.out.println("\rchat closed");
-              break;
+                System.exit(0);
             }
             System.out.println("\rvoce digitou: "+ sms);
         }
