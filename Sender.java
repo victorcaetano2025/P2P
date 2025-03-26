@@ -5,7 +5,9 @@ class Sender extends Thread {
 private int port;
 private String ip;
 
-public Sender(int port,String ip){
+public Sender(){};
+
+public Sender(String ip,int port){
     this.ip = ip;
     this.port = port;
 }
