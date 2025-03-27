@@ -2,37 +2,37 @@ import java.net.Socket;
 import java.util.Scanner;
 
 class Sender extends Thread {
-private int port;
-private String ip;
+    private int port;
+    private String ip;
 
-public Sender(){};
+    public Sender() {
+    };
 
-public Sender(String ip,int port){
-    this.ip = ip;
-    this.port = port;
-}
+    public Sender(String ip, int port) {
+        this.ip = ip;
+        this.port = port;
+    }
 
     public void run() {
-        try(
-            Socket socket = new Socket(ip,port);
-            Scanner scanner = new Scanner(System.in);
-            
-        ){
+        try (
+                Socket socket = new Socket(ip, port);
+                Scanner scanner = new Scanner(System.in);
+
+        ) {
             System.out.println("chat open");
 
-            while (true) {   
+            while (true) {
                 String mensagem = scanner.nextLine();
-            socket.getOutputStream();
-                
-           
+                socket.getOutputStream();
+
                 if (mensagem.equalsIgnoreCase("chatclose")) {
                     System.out.println("\rchat closed");
                     System.exit(0);
                 }
-                System.out.println("\rvoce digitou: "+ mensagem);
+                System.out.println("\rvoce digitou: " + mensagem);
             }
-        }catch (Exception e) {
-           e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

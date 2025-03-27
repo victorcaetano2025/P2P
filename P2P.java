@@ -3,7 +3,7 @@ public class P2P {
         Connector conn = new Connector();
         System.out.println("new feito");
         conn.server(4088);
-        Sender mensageiro = new Sender("127.0.0.2",4089);
+        Sender mensageiro = new Sender("127.0.0.2", 4089);
         mensageiro.start();
     }
 }
