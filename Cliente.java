@@ -1,6 +1,7 @@
 import java.io.*; //importacoes
 import java.net.*;
 import java.util.Scanner;
+import java.util.concurrent.TransferQueue;
 
 public class Cliente {
     public static void main(String[] args) throws IOException {
@@ -24,10 +25,10 @@ public class Cliente {
             System.out.println("Digite agora a porta que deseja conectar: ");
             int porta=scanner.nextInt(); //define a variavel e ler com o scanner
             scanner.nextLine();
-                /* converter em classe para uso de thread com parametro dos scanner anteriores 
-            socket=new Socket(Ip, porta); //cria um socket com o IP e a porta fornecida como parametro
-            System.out.println("Conectado ao IP: " + Ip + "e a porta: " + porta);
-                 */
+               
+            ThreadEnviar enviarei = new ThreadEnviar(Ip, porta);
+            Thread thread = new Thread(enviarei);
+            thread.start();
         }
 
         else {
