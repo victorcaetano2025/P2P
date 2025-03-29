@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.net.*;
 
-public class Connector {
+public class ThreadReceptor {
 
     public void server(int port){
         try (ServerSocket serverSocket = new ServerSocket(port)) {
