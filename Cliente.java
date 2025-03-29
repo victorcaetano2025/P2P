@@ -15,6 +15,8 @@ public class Cliente {
 
         Socket socket=null; //socket comeca sem nada
 
+        try {
+            
         if (resposta.equalsIgnoreCase("s")){ //condicional
             System.out.println("Digite o seu IP (caso seja na mesma maquina digite localhost): ");
             String Ip=scanner.nextLine(); //define a variavel e ler com o scanner
@@ -34,7 +36,9 @@ public class Cliente {
             socket = serverSocket.accept(); //permite conexao
             System.out.println("Conexao aceita");
         }
-
+    } catch (Exception e) {
+        
+    }
         new Thread (new Receptor (socket)).start(); //incia a Thread com o start
         new Thread (new Enviar (socket)).start(); //incia a Thread com o start
 
