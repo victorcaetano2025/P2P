@@ -40,7 +40,7 @@ public class Cliente {
         
     }
         new Thread (new Receptor (socket)).start(); //incia a Thread com o start
-        new Thread (new Enviar (socket)).start(); //incia a Thread com o start
+        
 
     
 
