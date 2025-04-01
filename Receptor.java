@@ -12,15 +12,19 @@ class Receptor implements Runnable{
    
         try {
                 
-    BufferedReader input =  new BufferedReader(new InputStreamReader(socket.getInputStream()));
+    (BufferedReader input =  new BufferedReader(new InputStreamReader(socket.getInputStream()))); {
+
+    }
+    }
     String mensagem;
-    while((mensagem=input.readLine())!=null){
+    while((mensagem=input.readLine())!=null) {
         System.out.println("\\Mensagem recebida\\ " + mensagem);
-}
+    }
+ } finally {
+    
     } catch (Exception e) {
         System.out.println("Fim da conexao");
         }
-}
+    }
     
-}
 
