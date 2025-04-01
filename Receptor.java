@@ -21,10 +21,12 @@ class Receptor implements Runnable{
         System.out.println("\\Mensagem recebida\\ " + mensagem);
     }
  } finally {
-    
-    } catch (Exception e) {
+
+    try {
+         socket.close(); 
+    } catch (IOException e) {
         System.out.println("Fim da conexao");
-        }
     }
+}
     
 
