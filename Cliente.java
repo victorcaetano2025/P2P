@@ -40,7 +40,7 @@ public class Cliente {
             System.out.println("Conexao aceita");
         }
     } catch (Exception e) {
-        
+        System.out.println("erro ao conectar ou com o servidor");
     }
         new Thread (new Receptor (socket)).start(); //incia a Thread com o start
 
