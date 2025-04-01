@@ -39,8 +39,11 @@ public class Cliente {
             socket = serverSocket.accept(); //permite conexao
             System.out.println("Conexao aceita");
         }
-    } catch (Exception e) {
-        System.out.println("erro ao conectar ou com o servidor");
+    } catch (IOException e) {
+        System.out.println("erro ao conectar ou com o servidor"); // Falha ao conectar a um servidor remoto. 
+                                                                    //  Problemas de comunicação via HTTP, sockets, ou streams de entrada/saída.
+        
+        
     }
         new Thread (new Receptor (socket)).start(); //incia a Thread com o start
 
