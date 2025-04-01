@@ -15,7 +15,7 @@ public class Cliente {
         String resposta=scanner.nextLine();
 
         Socket socket=null; //socket comeca sem nada
-        vver
+       
         try {
             System.out.println("asd");
             
