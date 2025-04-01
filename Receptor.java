@@ -8,9 +8,10 @@ class Receptor implements Runnable{
         this.socket=socket;
     }
 
+    @Override
     public void run(){
    
-    try (BufferedReader input =  new BufferedReader(new InputStreamReader(socket.getInputStream()))); {
+    try (BufferedReader input =  new BufferedReader(new InputStreamReader(socket.getInputStream()))){
 
     String mensagem;
     while((mensagem = input.readLine()) != null) {

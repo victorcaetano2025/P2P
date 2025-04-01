@@ -1,4 +1,4 @@
-import java.io.*; //importacoes
+import java.io.*; //importacoes asddqrqwred
 import java.net.*;
 import java.util.Scanner;
 import java.util.concurrent.TransferQueue;
@@ -15,7 +15,7 @@ public class Cliente {
         String resposta=scanner.nextLine();
 
         Socket socket=null; //socket comeca sem nada
-
+        vver
         try {
             System.out.println("asd");
             
