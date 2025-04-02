@@ -34,6 +34,7 @@ public class ThreadEnviar implements Runnable {
 
         } catch (IOException e) { // Mudança para IOException
             System.out.println("Erro ao conectar ou enviar mensagem: " + e.getMessage());
+            e.printStackTrace();
         }
 
     }
