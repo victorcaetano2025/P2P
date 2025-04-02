@@ -9,7 +9,7 @@ public class Cliente {
             int minhaPorta = scanner.nextInt();
             scanner.nextLine();
 
-            Serveropeners serveropener = new Serveropeners(minhaPorta);
+            Serveropener serveropener = new Serveropener(minhaPorta);
             Thread threadsever = new Thread(serveropener);
             threadsever.start();
 
