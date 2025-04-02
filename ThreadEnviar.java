@@ -4,24 +4,22 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class ThreadEnviar implements Runnable {
-    private String ip;
-    private int portadestino;
 
-    public ThreadEnviar(String ip, int portadestino) {
-        this.ip = ip;
-        this.portadestino = portadestino;
+    private Socket socket;
 
+    public ThreadEnviar(Socket socket) {
+        this.socket = socket;
     }
 
     @Override
     public void run() {
         try {
-            Socket socket = new Socket(ip, portadestino);
+
             PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
             Scanner scanner = new Scanner(System.in);
 
             System.out.println("caso deseje sair digite 'chat_close'");
-            
+
             while (true) {
                 String sms = scanner.nextLine();
                 output.println(sms);

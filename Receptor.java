@@ -1,33 +1,26 @@
 import java.io.*;
 import java.net.*;
 
-class Receptor implements Runnable{
+class Receptor implements Runnable {
     private Socket socket;
 
-    public Receptor (Socket socket){
-        this.socket=socket;
+    public Receptor(Socket socket) {
+        this.socket = socket;
     }
 
-    @Override
-    public void run(){
-   
-    try (BufferedReader input =  new BufferedReader(new InputStreamReader(socket.getInputStream()))){
+    public void run() {
 
-    String mensagem;
-    while((mensagem = input.readLine()) != null) {
-        System.out.println("\\Mensagem recebida\\ " + mensagem);
+        try {
+
+            BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            String mensagem;
+            while ((mensagem = input.readLine()) != null) {
+                System.out.println(socket.getInetAddress() + ": " + mensagem);
+            }
+        } catch (Exception e) {
+            System.out.println("erro no Receptor");
+            e.printStackTrace();
+        }
     }
- } catch (IOException e) {
-     System.out.println("Erro ao ler o Socket:" + e.getMessage());  
- } finally {
 
-    try {
-         
-        socket.close();
-
-    } catch (IOException e) {
-        System.out.println("Fim da conexao:" + e.getMessage());
-      }
-    }
-  }   
 }
