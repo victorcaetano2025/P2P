@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class Cliente {
     public static void main(String[] args) throws IOException {
-        try (Scanner scanner = new Scanner(System.in)) {
+        try {
+            Scanner scanner = new Scanner(System.in);
             System.out.println("Digite sua porta: ");
             int minhaPorta = scanner.nextInt();
             scanner.nextLine();
@@ -19,7 +20,7 @@ public class Cliente {
             System.out.println("Digite agora a porta que deseja conectar: ");
             int portaDestino = scanner.nextInt();
             scanner.nextLine();
-
+            
             Socket socket = new Socket(meuIp, portaDestino);
             new Thread(new ThreadEnviar(socket)).start();
         } catch (Exception e) {

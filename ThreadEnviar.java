@@ -13,7 +13,7 @@ public class ThreadEnviar implements Runnable {
 
     @Override
     public void run() {
-        try {
+        try{
 
             PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
             Scanner scanner = new Scanner(System.in);
@@ -25,6 +25,7 @@ public class ThreadEnviar implements Runnable {
                 output.println(sms);
 
                 if (sms.equalsIgnoreCase("chat_close")) {
+                    output.println(socket.getInetAddress()+" encerrou chat");
                     break;
                 }
 
