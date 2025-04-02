@@ -13,9 +13,11 @@ class Serveropener implements Runnable {
     @Override
     public void run() {
         try (ServerSocket server = new ServerSocket(porta)) {
+            System.out.println("aguardando alguem se conectar na porta: " + porta);
             while (true) {
                 Socket conectou = server.accept();
-                System.out.println("Cliente conectado: " + conectou.getInetAddress());
+                String ipsocket = conectou.getInetAddress().getHostAddress();
+                System.out.println("Cliente conectado: " + ipsocket );
 
                 Receptor receptor = new Receptor(conectou);
                 Thread threadReceptor = new Thread(receptor);

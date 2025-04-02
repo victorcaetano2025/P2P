@@ -15,7 +15,7 @@ class Receptor implements Runnable {
             BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String mensagem;
             while ((mensagem = input.readLine()) != null) {
-                System.out.println(socket.getInetAddress() + ": " + mensagem);
+                System.out.println(mensagem);
             }
         } catch (Exception e) {
             System.out.println("erro no Receptor");

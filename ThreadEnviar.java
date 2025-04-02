@@ -22,7 +22,7 @@ public class ThreadEnviar implements Runnable {
 
             while (true) {
                 String sms = scanner.nextLine();
-                output.println(sms);
+                output.println(socket.getInetAddress().getHostName()+": "+sms);
 
                 if (sms.equalsIgnoreCase("chat_close")) {
                     output.println(socket.getInetAddress()+" encerrou chat");
