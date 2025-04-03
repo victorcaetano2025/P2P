@@ -4,7 +4,6 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class ThreadEnviar implements Runnable {
-
     private Socket socket;
 
     public ThreadEnviar(Socket socket) {
@@ -13,30 +12,34 @@ public class ThreadEnviar implements Runnable {
 
     @Override
     public void run() {
-        try{
-
+        try {
+            
             PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
-            Scanner scanner = new Scanner(System.in);
+             Scanner scanner = new Scanner(System.in); 
 
-            System.out.println("caso deseje sair digite 'chat_close'");
+            System.out.println("Para sair, digite 'chat_close'");
 
             while (true) {
-                String sms = scanner.nextLine();
-                output.println(socket.getInetAddress().getHostName()+": "+sms);
-
-                if (sms.equalsIgnoreCase("chat_close")) {
-                    output.println(socket.getInetAddress()+" encerrou chat");
+                if (socket.isClosed()) { // Verifica se o socket ainda está aberto
+                    System.out.println("Conexão foi encerrada.");
                     break;
                 }
+                String sms = scanner.nextLine();
+                output.println(socket.getInetAddress().getHostName() + ": " + sms);
 
+                if (sms.equalsIgnoreCase("chat_close")) {
+                    output.println(socket.getInetAddress().getHostName() + " encerrou o chat.");
+                    break;
+                }
             }
-            socket.close();
+
+            output.close();
             scanner.close();
+            socket.close();
 
-        } catch (IOException e) { // Mudança para IOException
-            System.out.println("Erro ao conectar ou enviar mensagem: " + e.getMessage());
-            e.printStackTrace();
+         } catch (IOException e) {
+            System.err.println("Erro ao enviar mensagem: " + e.getMessage());
         }
-
+        }
     }
-}
+

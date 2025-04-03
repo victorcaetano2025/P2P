@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -19,13 +20,10 @@ class Serveropener implements Runnable {
                 String ipsocket = conectou.getInetAddress().getHostAddress();
                 System.out.println("Cliente conectado: " + ipsocket );
 
-                Receptor receptor = new Receptor(conectou);
-                Thread threadReceptor = new Thread(receptor);
-                threadReceptor.start();
+                new Thread(new Receptor(conectou)).start();
             }
-        } catch (Exception e) {
-            System.out.println("erro no servidor");
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("Erro no servidor: "+e.getMessage());
 
         }
     }
