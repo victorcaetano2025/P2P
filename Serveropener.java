@@ -11,7 +11,7 @@ class Serveropener implements Runnable { //implementa numa Thread
 
     }
 
-    @Override //ajuda a avisar
+    @Override //ajuda a avisar erros e sobrescrever metodos
     public void run() { //chama a thread
         //"try" para fechar tudo apos o uso e tratar execoes
         try (ServerSocket server = new ServerSocket(porta)) { //cria um novo server

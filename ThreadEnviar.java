@@ -7,15 +7,15 @@ public class ThreadEnviar implements Runnable { //implementa numa Thread
     private Socket socket; //cria a variavel socket
 
     public ThreadEnviar(Socket socket) { //instancia a classe
-        this.socket = socket;
+        this.socket = socket; 
     }
 
-    @Override
-    public void run() {
+    @Override //ajuda a avisar erros e sobrescrever metodos
+    public void run() { //chama a thread
         try {
             
-            PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
-             Scanner scanner = new Scanner(System.in); 
+            PrintWriter output = new PrintWriter(socket.getOutputStream(), true); //pega a mensagem e converte de forma legivel e clara para enviar
+             Scanner scanner = new Scanner(System.in);  //cria um novo Scanner
 
             System.out.println("Para sair, digite 'chat_close'");
 
@@ -24,20 +24,20 @@ public class ThreadEnviar implements Runnable { //implementa numa Thread
                     System.out.println("Conexão foi encerrada.");
                     break;
                 }
-                String sms = scanner.nextLine();
-                output.println(socket.getInetAddress().getHostName() + ": " + sms);
+                String sms = scanner.nextLine(); //le a mensagem do teclado
+                output.println(socket.getInetAddress().getHostName() + ": " + sms); //envia pro outro cliente
 
-                if (sms.equalsIgnoreCase("chat_close")) {
+                if (sms.equalsIgnoreCase("chat_close")) { //se digitar chatclose ele para
                     output.println(socket.getInetAddress().getHostName() + " encerrou o chat.");
                     break;
                 }
             }
 
-            output.close();
-            scanner.close();
-            socket.close();
+            output.close(); //fecha o envio de mensagens
+            scanner.close(); //fecha a leitura
+            socket.close(); //fecha o socket
 
-         } catch (IOException e) {
+         } catch (IOException e) { //caso alguma thread ou socket falhem
             System.err.println("Erro ao enviar mensagem: " + e.getMessage());
         }
         }
