@@ -1,28 +1,29 @@
-import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.io.IOException; //trata execoes de entrada e saida
+import java.net.ServerSocket; //permite utilizar serverSocket
+import java.net.Socket; //permite o uso de socket
 
-class Serveropener implements Runnable {
+class Serveropener implements Runnable { //implementa numa Thread
 
-    private int porta;
+    private int porta; //cria uma variavel porta
 
-    public Serveropener(int porta) {
+    public Serveropener(int porta) { //instancia a classe
         this.porta = porta;
 
     }
 
-    @Override
-    public void run() {
-        try (ServerSocket server = new ServerSocket(porta)) {
+    @Override //ajuda a avisar
+    public void run() { //chama a thread
+        //"try" para fechar tudo apos o uso e tratar execoes
+        try (ServerSocket server = new ServerSocket(porta)) { //cria um novo server
             System.out.println("aguardando alguem se conectar na porta: " + porta);
             while (true) {
-                Socket conectou = server.accept();
-                String ipsocket = conectou.getInetAddress().getHostAddress();
+                Socket conectou = server.accept(); //bloqueia ate se conectar
+                String ipsocket = conectou.getInetAddress().getHostAddress(); //permite conexao e retorna o ip
                 System.out.println("Cliente conectado: " + ipsocket );
 
-                new Thread(new Receptor(conectou)).start();
+                new Thread(new Receptor(conectou)).start(); //permite que continue acietando conexoes
             }
-        } catch (IOException e) {
+        } catch (IOException e) { //caso alguma thread ou socket falhem
             System.err.println("Erro no servidor: "+e.getMessage());
 
         }

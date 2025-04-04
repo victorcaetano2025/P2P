@@ -1,12 +1,12 @@
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.Socket;
-import java.util.Scanner;
+import java.io.IOException; //trata execoes de entrada e saida
+import java.io.PrintWriter; //envia mensagens de forma mais conveniente
+import java.net.Socket; //permite o uso de socket
+import java.util.Scanner; //permite a leitura do teclado
 
-public class ThreadEnviar implements Runnable {
-    private Socket socket;
+public class ThreadEnviar implements Runnable { //implementa numa Thread
+    private Socket socket; //cria a variavel socket
 
-    public ThreadEnviar(Socket socket) {
+    public ThreadEnviar(Socket socket) { //instancia a classe
         this.socket = socket;
     }
 
